@@ -1,0 +1,23 @@
+<div class="header-container">
+<h1>To Do</h1>
+<%= link_to "New Entry", "/entries/new" %>
+</div>
+
+
+<ul>
+  <% @entries.each do |entry| %>
+  <div class="list-container">
+  <div class="entries">
+    <h1 class="entry-title"><%= link_to entry.song_title, entry %><h1>
+    <h2 class="entry-year"><%= entry.year %><h2>
+    <h2 class="entry-composer"><%= entry.composer %><h2>
+    <h2 class="entry-key"><%= entry.key %><h2>
+    <h3>Created at: <%= entry.created_at.to_formatted_s(:db)%></h3>
+    <h4><%= link_to "Edit", edit_entry_path(entry) %>       <%= link_to "Delete", entry_path(entry), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></h4>
+    </div>
+    </div>
+  <% end %>
+</ul>
