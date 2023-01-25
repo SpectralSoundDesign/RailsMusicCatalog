@@ -21,9 +21,10 @@ class EntriesController < ApplicationController
   end
 
   def index
-    @entries = Entry.all
+    @q = Entry.ransack(params[:q])
+    @entries = @q.result
   end
-  
+
   def show
     @entry = Entry.find(params[:id])
   end
@@ -66,6 +67,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:song_title, :year, :composer, :key, :search)
+    params.require(:entry).permit(:song_title, :year, :composer, :key)
   end
 end

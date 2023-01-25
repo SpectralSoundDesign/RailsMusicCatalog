@@ -5,6 +5,12 @@
     <%= form.file_field :file, accept: ".csv" %>
     <%= form.button "Import" %>
   <% end %>
+  <%= search_form_for @q do |f| %>
+    <%= f.label :song_title_cont %>
+    <%= f.text_field :song_title_cont %>
+    <%= link_to "Clear", "/entries" %>
+    <%= f.submit %>
+  <% end %>
 </div>
 <ul>
   <% @entries.each do |entry| %>
