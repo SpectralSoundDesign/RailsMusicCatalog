@@ -5,6 +5,7 @@ class CreateEntries < ActiveRecord::Migration[7.0]
       t.string :year
       t.string :composer
       t.string :key
+      t.string :video_url
 
       t.timestamps
     end

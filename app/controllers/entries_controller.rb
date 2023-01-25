@@ -14,6 +14,7 @@ class EntriesController < ApplicationController
       song_hash[:year] = row["Year"]
       song_hash[:composer] = row["Composer"]
       song_hash[:key] = row["Key(s)"]
+      song_hash[:video_url] = row["VideoLink"]
       Entry.create(song_hash)
     end
 
@@ -67,6 +68,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:song_title, :year, :composer, :key)
+    params.require(:entry).permit(:song_title, :year, :composer, :key, :video_url)
   end
 end

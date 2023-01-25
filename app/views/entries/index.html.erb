@@ -1,5 +1,5 @@
 <div class="header-container">
-  <h1>To Do</h1>
+  <h1>Music Catalog</h1>
   <%= link_to "New Entry", "/entries/new" %>
   <%= form_with url:import_entries_path, method: :post do |form| %>
     <%= form.file_field :file, accept: ".csv" %>
@@ -8,6 +8,12 @@
   <%= search_form_for @q do |f| %>
     <%= f.label :song_title_cont %>
     <%= f.text_field :song_title_cont %>
+    <%= f.label :composer_cont %>
+    <%= f.text_field :composer_cont %>
+    <%= f.label :key_cont %>
+    <%= f.text_field :key_cont %>
+    <%= f.label :year_cont %>
+    <%= f.text_field :year_cont %>
     <%= link_to "Clear", "/entries" %>
     <%= f.submit %>
   <% end %>
