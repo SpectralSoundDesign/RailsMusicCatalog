@@ -1,25 +1,24 @@
 <div class="edit-container">
-<%= form_with model: @entry do |form| %>
-<div class="title-input">
-<%= form.label "Title:" %>
-<%= form.text_field :song_title %>
-</div>
-<div class="year-input">
-<%= form.label "Year:" %>
-<%= form.text_field :year %>
-</div>
-<div class="composer-input">
-<%= form.label "Composer:" %>
-<%= form.text_field :composer %>
-</div>
-<div class="key-input">
-<%= form.label "Key:" %>
-<%= form.text_field :key %>
-</div>
-<div class="submit">
-<%= form.submit "Update Entry"%>
-</div>
-<% end %>
-
-<%= link_to "Show all entries", "/entries" %>
+  <%= form_with model: @entry do |form| %>
+    <div class="title-input">
+      <%= form.label "Title:" %>
+      <%= form.text_field :song_title %>
+    </div>
+    <div class="year-input">
+      <%= form.label "Year:" %>
+      <%= form.text_field :year %>
+    </div>
+    <div class="composer-input">
+      <%= form.label "Composer:" %>
+      <%= form.text_field :composer %>
+    </div>
+    <div class="key-input">
+      <%= form.label "Key:" %>
+      <%= form.text_field :key %>
+    </div>
+    <div class="submit">
+      <%= form.submit "Update Entry"%>
+    </div>
+  <% end %>
+  <%= link_to "Show all entries", "/entries" %>
 </div>

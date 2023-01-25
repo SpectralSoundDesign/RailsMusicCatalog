@@ -1,8 +1,29 @@
 class EntriesController < ApplicationController
+  require 'csv'
+
+  def import
+    file = params[:file]
+
+    return redirect_to "/entries", notice: "Only CSV files are accepted" unless file.content_type == "text/csv"
+
+    file = File.open(file)
+    csv = CSV.parse(file, headers: true, col_sep: ',')
+    csv.each do |row|
+      song_hash = Hash.new
+      song_hash[:song_title] = row["Title"]
+      song_hash[:year] = row["Year"]
+      song_hash[:composer] = row["Composer"]
+      song_hash[:key] = row["Key(s)"]
+      Entry.create(song_hash)
+    end
+
+    redirect_to "/entries", notice: 'Songs imported'
+  end
+
   def index
     @entries = Entry.all
   end
-
+  
   def show
     @entry = Entry.find(params[:id])
   end
@@ -45,6 +66,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:song_title, :year, :composer, :key)
+    params.require(:entry).permit(:song_title, :year, :composer, :key, :search)
   end
 end
