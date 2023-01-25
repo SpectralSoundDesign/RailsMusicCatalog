@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "/entries"
+  root to: redirect('entries')
 
   resources :entries do
     collection do
