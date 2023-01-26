@@ -6,6 +6,7 @@ class CreateEntries < ActiveRecord::Migration[7.0]
       t.string :composer
       t.string :key
       t.string :video_url
+      t.boolean :learning, default: false
 
       t.timestamps
     end

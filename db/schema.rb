@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_080313) do
     t.string "composer"
     t.string "key"
     t.string "video_url"
+    t.boolean "learning", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

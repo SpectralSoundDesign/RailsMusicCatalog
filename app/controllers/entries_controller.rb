@@ -68,6 +68,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:song_title, :year, :composer, :key, :video_url)
+    params.require(:entry).permit(:song_title, :year, :composer, :key, :video_url, :learning)
   end
 end
