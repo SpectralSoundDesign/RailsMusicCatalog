@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: redirect('entries')
+  devise_for :users
+  root to: 'main#home'
 
   resources :entries do
     collection do

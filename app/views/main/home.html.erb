@@ -1,0 +1,12 @@
+<h1>Welcome to my music app</h1>
+<h2>Sign up or Login to see the MusicCatalog!</h2>
+<%= link_to "Sign up", "/users/sign_up" %>
+<br>
+<%= link_to "Login", "/users/sign_in" %>
+<br>
+<br>
+<% if current_user %>
+  <%= link_to "Logout", "/users/sign_out" %>
+  <br>
+  <%= link_to "Music Catalog", "/entries" %>
+<% end %>

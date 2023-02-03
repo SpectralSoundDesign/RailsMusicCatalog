@@ -5,18 +5,20 @@
     <%= form.file_field :file, accept: ".csv" %>
     <%= form.button "Import" %>
   <% end %>
-  <%= search_form_for @q do |f| %>
-    <%= f.label :song_title_cont %>
-    <%= f.text_field :song_title_cont %>
-    <%= f.label :composer_cont %>
-    <%= f.text_field :composer_cont %>
-    <%= f.label :key_cont %>
-    <%= f.text_field :key_cont %>
-    <%= f.label :year_cont %>
-    <%= f.text_field :year_cont %>
-    <%= link_to "Clear", "/entries" %>
-    <%= f.submit %>
-  <% end %>
+  <div class="search-form">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :song_title_cont %>
+      <%= f.text_field :song_title_cont %>
+      <%= f.label :composer_cont %>
+      <%= f.text_field :composer_cont %>
+      <%= f.label :key_cont %>
+      <%= f.text_field :key_cont %>
+      <%= f.label :year_cont %>
+      <%= f.text_field :year_cont %>
+      <%= link_to "Clear", "/entries" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
 <ul>
   <% @entries.each do |entry| %>
@@ -28,11 +30,8 @@
               <h2>
                 <h2 class="entry-composer"><%= entry.composer %>
                   <h2>
-                    <h2 class="entry-key"><%= entry.key %><h2>
-                    <%= form_with model: @entry do |form| %>
-                    <%= form.check_box :learning %>
-                    <%= form.submit %>
-                    <% end %>
+                    <h2 class="entry-key"><%= entry.key %>
+                      <h2>
                         <h3>Created at: <%= entry.created_at.to_formatted_s(:db)%></h3>
                         <h4><%= link_to "Edit", edit_entry_path(entry) %>       <%= link_to "Delete", entry_path(entry), data: {
                     turbo_method: :delete,
